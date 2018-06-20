@@ -66,7 +66,7 @@ namespace RogueLike {
                         }
                     }
                 }
-
+                NpcChecker();
             }
         }
 
@@ -92,6 +92,7 @@ namespace RogueLike {
                         myPlayer.myInventory.Remove(myi[i]);
                     }
                 }
+                NpcChecker();
             }
         }
 
@@ -130,6 +131,7 @@ namespace RogueLike {
                         }
                     }
                 }
+                NpcChecker();
             }
         }
 
@@ -151,6 +153,24 @@ namespace RogueLike {
                         // Update Last Interaction
                         myPlayer.LastInteraction = string.Format("You fell in a trap and lost " +
                             "{0:f2} Hp.", myDamage);
+                    }
+                }
+            }
+        }
+
+        public void NpcChecker() {
+            foreach (Object obj in myWorld.myTiles[myPlayer.y, myPlayer.x].GetList().ToList()) {
+                if (obj is NPC) {
+                    if ((obj as NPC).Type == NPCType.Hostile) {
+                        // Give Damage to the Player
+                        myPlayer.Hp -= (
+                            myWorld.myTiles[myPlayer.y, myPlayer.x].GetObjects<NPC>().AttackPower *
+                            (float)rnd.NextDouble());
+
+                        // Update Last Interaction
+                        myPlayer.LastInteraction = "You where attack by a hostile NPC and lost " +
+                            myWorld.myTiles[myPlayer.y, myPlayer.x].GetObjects<NPC>().AttackPower +
+                            "Hp.";
                     }
                 }
             }

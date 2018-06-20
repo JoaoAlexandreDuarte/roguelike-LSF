@@ -8,7 +8,7 @@ namespace RogueLike {
     class Game {
         Random rnd;
 
-        private int level = 1;
+        private int level = 23;
         private ConsoleKeyInfo key;
 
         // MyPlayer
@@ -76,6 +76,7 @@ namespace RogueLike {
                     myPlayer.Hp--;
                     myPlayer.LastMove = "You Moved NORTH!";
                     myInteractions.TrapChecker();
+                    myInteractions.NpcChecker();
                 }
             } else if (key.Key == ConsoleKey.A) {
                 // Moves the Player West losing 1 hp
@@ -84,6 +85,7 @@ namespace RogueLike {
                     myPlayer.Hp--;
                     myPlayer.LastMove = "You Moved WEST!";
                     myInteractions.TrapChecker();
+                    myInteractions.NpcChecker();
                 }
             } else if (key.Key == ConsoleKey.S) {
                 // Moves the Player South losing 1 hp
@@ -92,6 +94,7 @@ namespace RogueLike {
                     myPlayer.Hp--;
                     myPlayer.LastMove = "You Moved SOUTH!";
                     myInteractions.TrapChecker();
+                    myInteractions.NpcChecker();
                 }
             } else if (key.Key == ConsoleKey.D) {
                 // Moves the Player East losing 1 hp
@@ -100,11 +103,13 @@ namespace RogueLike {
                     myPlayer.Hp--;
                     myPlayer.LastMove = "You Moved EAST!";
                     myInteractions.TrapChecker();
+                    myInteractions.NpcChecker();
                 }
             } else if (key.Key == ConsoleKey.E) {
                 myInteractions.PickItems();
             } else if (key.Key == ConsoleKey.I) {
                 myDrawing.DrawInformations();
+                myInteractions.NpcChecker();
             } else if (key.Key == ConsoleKey.Q) {
                 myInteractions.Quit();
             } else if (key.Key == ConsoleKey.V) {

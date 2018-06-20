@@ -107,7 +107,8 @@ namespace RogueLike {
                 do {
                     spawnRow = (int)(rnd.NextDouble() * myWorld.Rows);
                     spawnCol = (int)(rnd.NextDouble() * myWorld.Columns);
-                } while (myWorld.myTiles[spawnRow, spawnCol].Exit);
+                } while (myWorld.myTiles[spawnRow, spawnCol].Exit ||
+                myWorld.myTiles[spawnRow, spawnCol].AsPlayer);
 
                 myWorld.myTiles[spawnRow, spawnCol].Insert(0, myFood);
             }
@@ -129,7 +130,8 @@ namespace RogueLike {
                 do {
                     spawnRow = (int)(rnd.NextDouble() * myWorld.Rows);
                     spawnCol = (int)(rnd.NextDouble() * myWorld.Columns);
-                } while (myWorld.myTiles[spawnRow, spawnCol].Exit);
+                } while (myWorld.myTiles[spawnRow, spawnCol].Exit ||
+                myWorld.myTiles[spawnRow, spawnCol].AsPlayer);
 
                 myWorld.myTiles[spawnRow, spawnCol].Insert(0, myWeapon);
             }
@@ -151,7 +153,8 @@ namespace RogueLike {
                 do {
                     spawnRow = (int)(rnd.NextDouble() * myWorld.Rows);
                     spawnCol = (int)(rnd.NextDouble() * myWorld.Columns);
-                } while (myWorld.myTiles[spawnRow, spawnCol].Exit);
+                } while (myWorld.myTiles[spawnRow, spawnCol].Exit ||
+                myWorld.myTiles[spawnRow, spawnCol].AsPlayer);
 
                 myWorld.myTiles[spawnRow, spawnCol].Insert(0, myNPC);
             }
