@@ -10,8 +10,12 @@ namespace RogueLike {
             // Changes the Console encoding to be 'UTF8'.
             Console.OutputEncoding = Encoding.UTF8;
             Console.SetWindowSize(120, 50);
+
+            // Createa new menu
+            Menu myMenu = new Menu();
+
             // Call the DrawMenu method
-            Menu.DrawMenu();
+            myMenu.DrawMenu();
         }
     }
 }

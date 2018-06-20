@@ -66,5 +66,17 @@ namespace RogueLike {
                 }
             }
         }
+
+        public void Quit() {
+            string input;
+            Console.Clear();
+            Console.Write("Are you sure you want to quit? (y/n)");
+            input = Console.ReadLine();
+            if (input == "y") {
+                myPlayer.Hp = 0;
+            } else {
+                return;
+            }
+        }
     }
 }

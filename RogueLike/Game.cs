@@ -21,6 +21,8 @@ namespace RogueLike {
         private Draw myDrawing;
         // MyInteractions
         private Interaction myInteractions;
+        // MyScores
+        private HighScore myScore;
 
         public Game() {
             rnd = new Random();
@@ -28,6 +30,7 @@ namespace RogueLike {
             myWorld = new World(myPlayer, rnd);
             myGenerator = new Generator(level, myWorld, rnd);
             myDrawing = new Draw();
+            myScore = new HighScore();
             myInteractions = new Interaction(myPlayer, myWorld, myDrawing, myGenerator, rnd);
         }
 
@@ -54,6 +57,9 @@ namespace RogueLike {
                 }
 
             } while (myPlayer.Hp > 0);
+
+            // Ask the player for his name
+            myScore.NewScore(level);
         }
 
         private void UpdatePlayer() {
@@ -99,6 +105,8 @@ namespace RogueLike {
                 myInteractions.PickItems();
             } else if (key.Key == ConsoleKey.I) {
                 myDrawing.DrawInformations();
+            } else if (key.Key == ConsoleKey.Q) {
+                myInteractions.Quit();
             }
 
             // Insert the player into the first position on the Tile list

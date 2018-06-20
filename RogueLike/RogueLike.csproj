@@ -45,6 +45,7 @@
     <Compile Include="Draw.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Generator.cs" />
+    <Compile Include="HighScore.cs" />
     <Compile Include="IHasHp.cs" />
     <Compile Include="Interaction.cs" />
     <Compile Include="IStuff.cs" />
