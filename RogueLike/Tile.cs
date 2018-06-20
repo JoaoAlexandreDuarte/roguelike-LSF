@@ -110,6 +110,13 @@ namespace RogueLike {
                         Console.Write(Food);
                     } else if (this[i] is Weapon) {
                         Console.Write(Weapon);
+                    } else if (this[i] is NPC) {
+                        if ((this[i] as NPC).Type == NPCType.Hostile) {
+                            Console.Write(Enemy);
+                        } else {
+                            Console.Write(Neutral);
+                        }
+
                     } else {
                         Console.Write(".");
                     }

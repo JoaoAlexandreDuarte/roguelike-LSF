@@ -15,10 +15,14 @@ namespace RogueLike {
         private Trap myTrap;
         private Food myFood;
         private Weapon myWeapon;
+        private NPC myNPC;
 
         // Current Level
         private int level;
 
+        // Number of NPC
+        private readonly int maxNPCs = 20;
+        private readonly int baseNPCs = 5;
         // Multiplier
         private readonly float multiplier = 0.5f;
         // Number of traps
@@ -46,6 +50,7 @@ namespace RogueLike {
             PlaceTraps();
             PlaceTheFood();
             PlaceTheWeapons();
+            PlaceNPCs(level);
         }
 
         public void PlaceTheMap() {
@@ -127,6 +132,28 @@ namespace RogueLike {
                 } while (myWorld.myTiles[spawnRow, spawnCol].Exit);
 
                 myWorld.myTiles[spawnRow, spawnCol].Insert(0, myWeapon);
+            }
+        }
+
+        private void PlaceNPCs(int level) {
+            myNPC = new NPC(level, rnd);
+            int NPCftl;
+            if (level < baseNPCs) {
+                NPCftl = baseNPCs + level;
+            } else {
+                NPCftl = baseNPCs + (int)(level * multiplier);
+            }
+
+            NPCftl = rnd.Next(NPCftl);
+            if (NPCftl > maxNPCs) NPCftl = maxNPCs;
+
+            for (int i = 0; i < NPCftl; i++) {
+                do {
+                    spawnRow = (int)(rnd.NextDouble() * myWorld.Rows);
+                    spawnCol = (int)(rnd.NextDouble() * myWorld.Columns);
+                } while (myWorld.myTiles[spawnRow, spawnCol].Exit);
+
+                myWorld.myTiles[spawnRow, spawnCol].Insert(0, myNPC);
             }
         }
     }

@@ -54,6 +54,8 @@
     <Compile Include="IStuff.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Menu.cs" />
+    <Compile Include="NPC.cs" />
+    <Compile Include="NPCType.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
