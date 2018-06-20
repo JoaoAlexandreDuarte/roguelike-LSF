@@ -78,9 +78,6 @@ A classe `NPC` além de ter várias variáveis de instância, também tem propri
 
 A enumeração `NPCType` contém ambos os tipos de *NPC*'s que podem aparecer no jogo (`Neutral` e `Hostile`).
 
-*<p align="justify">
-</p>*
-
 ### Diagrama UML
 ![Diagrama_UML](UML.svg)
 
