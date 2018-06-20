@@ -1,0 +1,7 @@
+ShinySword 10 3 0,90
+RustySword 10 3 0,60
+ShinyDagger 5 1 0,95
+CursedDagger 12 1 0,20
+PowerAxe 18 8 0,92
+HeavyMace 16 7 0,96
+Chainsaw 40 20 0,50

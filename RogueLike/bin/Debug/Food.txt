@@ -1,0 +1,5 @@
+Apple 4 0,5
+Eggs 5 0,6
+Fish 10 1,0
+Meat 10 1,2
+Water 2 0,8

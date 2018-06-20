@@ -1,0 +1,5 @@
+HellPit 10
+SharpSpikes 15
+BananaPeel 3
+BearTrap 8
+BottomlessChasm 30

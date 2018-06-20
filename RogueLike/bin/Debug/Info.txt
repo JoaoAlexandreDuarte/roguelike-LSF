@@ -1,0 +1,25 @@
+Food             HPIncrease      Weight
+---------------------------------------
+Apple                    +4         0.5
+Eggs                     +5         0.6
+Fish                    +10         1.0
+Meat                    +10         1.2
+Water                    +2         0.8
+
+Weapon          AttackPower      Weight     Durability
+------------------------------------------------------
+Shiny Sword            10.0         3.0           0.90
+Rusty Sword            10.0         3.0           0.60
+Shiny Dagger            5.0         1.0           0.95
+Cursed Dagger          12.0         1.0           0.20
+Power Axe              18.0         8.0           0.92
+Heavy Mace             16.0         7.0           0.96
+Chainsaw               40.0        20.0           0.50
+
+Trap              MaxDamage
+---------------------------
+Hell Pit                -10
+Sharp Spikes            -15
+Banana Peel              -3
+Bear Trap                -8
+Bottomless Chasm        -30
