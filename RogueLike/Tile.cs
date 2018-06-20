@@ -106,10 +106,10 @@ namespace RogueLike {
                         Console.Write(Maps);
                     } else if (this[i] is Trap) {
                         Console.Write(Trap);
-                    } else if (this[i] is Player) {
-                        Console.Write(Player);
-                    } else if (this[i] is Player) {
-                        Console.Write(Player);
+                    } else if (this[i] is Food) {
+                        Console.Write(Food);
+                    } else if (this[i] is Weapon) {
+                        Console.Write(Weapon);
                     } else {
                         Console.Write(".");
                     }

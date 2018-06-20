@@ -117,6 +117,13 @@ namespace RogueLike {
             Console.WriteLine("(I) Information (Q) Quit game");
         }
 
+        public void ItemInteraction(string type) {
+            Console.Clear();
+            Console.WriteLine("Select item to " + type);
+            Console.WriteLine("--------------------\n");
+            Console.WriteLine("0  Back");
+        }
+
         /// <summary>
         /// Draws the ful information window
         /// </summary>

@@ -107,6 +107,8 @@ namespace RogueLike {
                 myDrawing.DrawInformations();
             } else if (key.Key == ConsoleKey.Q) {
                 myInteractions.Quit();
+            } else if (key.Key == ConsoleKey.V) {
+                myInteractions.DropItems();
             }
 
             // Insert the player into the first position on the Tile list

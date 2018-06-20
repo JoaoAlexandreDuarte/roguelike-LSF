@@ -9,19 +9,36 @@ namespace RogueLike {
         private float baseWeight;
         public int x, y;
 
+        public float Hp { get; set; } = 100;
+
         public string LastMove { get; set; }
         public string LastInteraction { get; set; }
 
-        public float Hp { get; set; } = 100;
+        public Inventory myInventory;
+        public Weapon equiptSlot;
 
         public float Weight {
             get {
-                return baseWeight;
+                return baseWeight + myInventory.Weight +
+                    (equiptSlot != default(Weapon) ? equiptSlot.Weight : 0);
             }
         }
 
         public Player(float baseWeight) {
             this.baseWeight = baseWeight;
+            myInventory = new Inventory();
+        }
+
+        public string InventoryPercentage() {
+            string percent;
+            if (equiptSlot != default(Weapon)) {
+                percent = string.Format("{0:p2}",
+                    (myInventory.Weight + equiptSlot.Weight) / Weight);
+            } else {
+                percent = string.Format("{0:p2}", myInventory.Weight / Weight);
+            }
+
+            return percent;
         }
     }
 }

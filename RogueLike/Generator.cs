@@ -13,6 +13,8 @@ namespace RogueLike {
         private World myWorld;
         public Map myMap;
         private Trap myTrap;
+        private Food myFood;
+        private Weapon myWeapon;
 
         // Current Level
         private int level;
@@ -21,6 +23,10 @@ namespace RogueLike {
         private readonly float multiplier = 0.5f;
         // Number of traps
         private int baseTraps = 5;
+        // Max Food
+        private int food = 10;
+        // Max Food
+        private int weapon = 5;
 
         // Get a random value for the Row and Column
         int spawnRow;
@@ -38,6 +44,8 @@ namespace RogueLike {
             myMap = new Map();
             PlaceTheMap();
             PlaceTraps();
+            PlaceTheFood();
+            PlaceTheWeapons();
         }
 
         public void PlaceTheMap() {
@@ -76,6 +84,49 @@ namespace RogueLike {
                 myWorld.myTiles[spawnRow, spawnCol].AsPlayer);
 
                 myWorld.myTiles[spawnRow, spawnCol].Insert(0, myTrap);
+            }
+        }
+
+        private void PlaceTheFood() {
+            List<string> FoodList = File.ReadAllLines(localFood).ToList();
+
+            // Determine the number of food for this level
+            int levelFood = rnd.Next(food);
+
+            for (int i = 0; i < levelFood; i++) {
+                int randomFood = rnd.Next(FoodList.Count());
+                string[] foods = FoodList[randomFood].Split(' ');
+
+                myFood = new Food(foods[0], Convert.ToSingle(foods[1]), Convert.ToSingle(foods[2]));
+
+                do {
+                    spawnRow = (int)(rnd.NextDouble() * myWorld.Rows);
+                    spawnCol = (int)(rnd.NextDouble() * myWorld.Columns);
+                } while (myWorld.myTiles[spawnRow, spawnCol].Exit);
+
+                myWorld.myTiles[spawnRow, spawnCol].Insert(0, myFood);
+            }
+        }
+
+        private void PlaceTheWeapons() {
+            List<string> WeaponList = File.ReadAllLines(localWeapon).ToList();
+
+            // Determine the number of food for this level
+            int levelWeapon = rnd.Next(weapon);
+
+            for (int i = 0; i < levelWeapon; i++) {
+                int randomWeapon = rnd.Next(WeaponList.Count());
+                string[] weapons = WeaponList[randomWeapon].Split(' ');
+
+                myWeapon = new Weapon(weapons[0], Convert.ToSingle(weapons[1]),
+                    Convert.ToSingle(weapons[2]), Convert.ToSingle(weapons[3]));
+
+                do {
+                    spawnRow = (int)(rnd.NextDouble() * myWorld.Rows);
+                    spawnCol = (int)(rnd.NextDouble() * myWorld.Columns);
+                } while (myWorld.myTiles[spawnRow, spawnCol].Exit);
+
+                myWorld.myTiles[spawnRow, spawnCol].Insert(0, myWeapon);
             }
         }
     }

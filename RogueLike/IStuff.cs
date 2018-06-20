@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
-    interface IStuff {
+    interface IStuff : IHasWeight {
     }
 }
