@@ -49,6 +49,14 @@ namespace RogueLike {
             }
         }
 
+        public T GetObjects<T>() {
+            foreach (Object obj in this) {
+                if (obj is T) {
+                    return (T)obj;
+                }
+            }
+            return default(T);
+        }
 
         public override string ToString() {
             string myObjects = "";
@@ -96,8 +104,8 @@ namespace RogueLike {
                         Console.Write(Player);
                     } else if (this[i] is Map) {
                         Console.Write(Maps);
-                    } else if (this[i] is Player) {
-                        Console.Write(Player);
+                    } else if (this[i] is Trap) {
+                        Console.Write(Trap);
                     } else if (this[i] is Player) {
                         Console.Write(Player);
                     } else if (this[i] is Player) {

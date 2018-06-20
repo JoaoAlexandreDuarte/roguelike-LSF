@@ -41,8 +41,12 @@ namespace RogueLike {
         }
 
         public void PlaceTheMap() {
-            int spawnRow = (int)(rnd.NextDouble() * myWorld.Rows);
-            int spawnCol = (int)(rnd.NextDouble() * myWorld.Columns);
+            do {
+                spawnRow = (int)(rnd.NextDouble() * myWorld.Rows);
+                spawnCol = (int)(rnd.NextDouble() * myWorld.Columns);
+            } while (myWorld.myTiles[spawnRow, spawnCol].Exit ||
+                myWorld.myTiles[spawnRow, spawnCol].AsPlayer);
+
             myWorld.myTiles[spawnRow, spawnCol].Insert(0, myMap);
         }
 

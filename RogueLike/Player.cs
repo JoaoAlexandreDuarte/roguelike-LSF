@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace RogueLike {
     class Player {
-        private const int maxWeight = 20;
         private float baseWeight;
         public int x, y;
+
         public string LastMove { get; set; }
+        public string LastInteraction { get; set; }
 
         public float Hp { get; set; } = 100;
 

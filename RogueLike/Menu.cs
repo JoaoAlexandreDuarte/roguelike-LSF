@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 namespace RogueLike {
     class Menu {
         private Game myGame;
+        
 
-        public Menu(Game myGame) {
-            this.myGame = myGame;
-        }
 
-        public void DrawMenu() {
+        public Menu() {}
+
+        public static void DrawMenu() {
+            Menu myMenu = new Menu();
+
             // Clears the console to write a simple menu.
             Console.Clear();
             Console.WriteLine("╔═══════════════════════╗");
@@ -24,13 +26,14 @@ namespace RogueLike {
             Console.WriteLine("║\t4 - Quit\t║");
             Console.WriteLine("╚═══════════════════════╝");
 
-            // Calls the 'Choice()' Method.
-            Choice(Console.ReadLine());
+            // Calls the 'Choise()' Method.
+            myMenu.Choice(Console.ReadLine());
         }
 
         private void Choice(string option) {
             switch (option) {
                 case "1":
+                    myGame = new Game();
                     myGame.GenerateWorld();
                     DrawMenu();
                     break;

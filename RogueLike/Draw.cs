@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,9 @@ namespace RogueLike {
     class Draw {
         // Current Level
         private int level;
+
+        // Info File
+        private string info = "Info.txt";
 
         // Offsets
         private readonly int offsetX = 61;
@@ -88,8 +92,8 @@ namespace RogueLike {
             Console.SetCursorPosition(0, messageOffset);
             Console.WriteLine("Messages");
             Console.WriteLine("---------");
-            Console.WriteLine(myPlayer.LastMove);
-            Console.WriteLine("*\n");
+            Console.WriteLine("* " + myPlayer.LastMove);
+            Console.WriteLine("* " + myPlayer.LastInteraction + "\n");
             Console.WriteLine("What do i see?");
             Console.WriteLine("---------------");
             if (myPlayer.y > 0) {
@@ -111,6 +115,18 @@ namespace RogueLike {
             Console.WriteLine("(W) Move NORTH  (A) Move WEST    (S) Move SOUTH (D) Move EAST");
             Console.WriteLine("(F) Attack NPC  (E) Pick up item (U) Use item   (V) Drop item");
             Console.WriteLine("(I) Information (Q) Quit game");
+        }
+
+        /// <summary>
+        /// Draws the ful information window
+        /// </summary>
+        public void DrawInformations() {
+            Console.Clear();
+            List<string> infoList = File.ReadAllLines(info).ToList();
+            foreach (string line in infoList) {
+                Console.WriteLine(line);
+            }
+            Console.ReadKey();
         }
     }
 }

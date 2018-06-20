@@ -50,6 +50,7 @@ namespace RogueLike {
                     level++;
                     myWorld = new World(myPlayer, rnd);
                     myGenerator = new Generator(level, myWorld, rnd);
+                    myInteractions = new Interaction(myPlayer, myWorld, myDrawing, myGenerator, rnd);
                 }
 
             } while (myPlayer.Hp > 0);
@@ -68,6 +69,7 @@ namespace RogueLike {
                     myPlayer.y--;
                     myPlayer.Hp--;
                     myPlayer.LastMove = "You Moved NORTH!";
+                    myInteractions.TrapChecker();
                 }
             } else if (key.Key == ConsoleKey.A) {
                 // Moves the Player West losing 1 hp
@@ -75,6 +77,7 @@ namespace RogueLike {
                     myPlayer.x--;
                     myPlayer.Hp--;
                     myPlayer.LastMove = "You Moved WEST!";
+                    myInteractions.TrapChecker();
                 }
             } else if (key.Key == ConsoleKey.S) {
                 // Moves the Player South losing 1 hp
@@ -82,6 +85,7 @@ namespace RogueLike {
                     myPlayer.y++;
                     myPlayer.Hp--;
                     myPlayer.LastMove = "You Moved SOUTH!";
+                    myInteractions.TrapChecker();
                 }
             } else if (key.Key == ConsoleKey.D) {
                 // Moves the Player East losing 1 hp
@@ -89,9 +93,12 @@ namespace RogueLike {
                     myPlayer.x++;
                     myPlayer.Hp--;
                     myPlayer.LastMove = "You Moved EAST!";
+                    myInteractions.TrapChecker();
                 }
             } else if (key.Key == ConsoleKey.E) {
                 myInteractions.PickItems();
+            } else if (key.Key == ConsoleKey.I) {
+                myDrawing.DrawInformations();
             }
 
             // Insert the player into the first position on the Tile list

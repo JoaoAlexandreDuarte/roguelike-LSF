@@ -43,5 +43,28 @@ namespace RogueLike {
                 }
             }
         }
+
+        /// <summary>
+        /// Checks the tile list for traps that damage the player
+        /// </summary>
+        public void TrapChecker() {
+            foreach (Object obj in myWorld.myTiles[myPlayer.y, myPlayer.x].GetList().ToList()) {
+                if (obj is Trap) {
+                    if (!(obj as Trap).FallenInto) {
+                        // Get Random Damage
+                        float myDamage = (float)(rnd.NextDouble() *
+                            myWorld.myTiles[myPlayer.y, myPlayer.x].GetObjects<Trap>().Damage);
+
+                        (obj as Trap).FallenInto = true;
+                        // Take random damage from the trap
+                        myPlayer.Hp -= myDamage;
+
+                        // Update Last Interaction
+                        myPlayer.LastInteraction = string.Format("You fell in a trap and lost " +
+                            "{0:f2} Hp.", myDamage);
+                    }
+                }
+            }
+        }
     }
 }
