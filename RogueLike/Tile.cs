@@ -94,8 +94,8 @@ namespace RogueLike {
                         }
                     } else if (this[i] is Player) {
                         Console.Write(Player);
-                    } else if (this[i] is Player) {
-                        Console.Write(Player);
+                    } else if (this[i] is Map) {
+                        Console.Write(Maps);
                     } else if (this[i] is Player) {
                         Console.Write(Player);
                     } else if (this[i] is Player) {

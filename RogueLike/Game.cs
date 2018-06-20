@@ -19,6 +19,8 @@ namespace RogueLike {
         private Generator myGenerator;
         // MyDrawing Draws the world
         private Draw myDrawing;
+        // MyInteractions
+        private Interaction myInteractions;
 
         public Game() {
             rnd = new Random();
@@ -26,6 +28,7 @@ namespace RogueLike {
             myWorld = new World(myPlayer, rnd);
             myGenerator = new Generator(level, myWorld, rnd);
             myDrawing = new Draw();
+            myInteractions = new Interaction(myPlayer, myWorld, myDrawing, myGenerator, rnd);
         }
 
         public void GenerateWorld() {
@@ -87,6 +90,8 @@ namespace RogueLike {
                     myPlayer.Hp--;
                     myPlayer.LastMove = "You Moved EAST!";
                 }
+            } else if (key.Key == ConsoleKey.E) {
+                myInteractions.PickItems();
             }
 
             // Insert the player into the first position on the Tile list

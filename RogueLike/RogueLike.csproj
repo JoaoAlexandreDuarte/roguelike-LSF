@@ -46,7 +46,9 @@
     <Compile Include="Game.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="IHasHp.cs" />
+    <Compile Include="Interaction.cs" />
     <Compile Include="IStuff.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
