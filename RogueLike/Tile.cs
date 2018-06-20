@@ -30,6 +30,12 @@ namespace RogueLike {
         // Mark a tile as being an Exit
         public bool Exit { get; set; }
 
+        // Mark a tile as Explored
+        public bool Explored { get; set; }
+
+        // Mark a tile as having a Player in it
+        public bool AsPlayer { get; set; }
+
         /// <summary>Construtor que cria uma nova instância de mochila</summary>
         public Tile() {
             for (int i = 0; i < 10; i++) {
@@ -42,6 +48,7 @@ namespace RogueLike {
                 yield return obj;
             }
         }
+
 
         public override string ToString() {
             string myObjects = "";
@@ -61,6 +68,16 @@ namespace RogueLike {
         public void DrawMe(int cRow, int cColumn) {
             cRow += 1;
 
+            // Check if the player is in this tile to mark it has explored and as having a Player
+            foreach (Object obj in this) {
+                if (obj is Player) {
+                    Explored = true;
+                    AsPlayer = true;
+                } else {
+                    AsPlayer = false;
+                }
+            }
+
             for (int i = 0; i < maxTiles; i++) {
                 if (i == 0) {
                     Console.SetCursorPosition(cColumn * cOffset, cRow * rOffset);
@@ -70,22 +87,26 @@ namespace RogueLike {
                     Console.Write("  ");
                 }
 
-                if (Exit) {
-                    if (i == 0 || i == 5) {
-                        Console.Write("EXIT!");
+                if (Explored) {
+                    if (Exit) {
+                        if (i == 0 || i == 5) {
+                            Console.Write("EXIT!");
+                        }
+                    } else if (this[i] is Player) {
+                        Console.Write(Player);
+                    } else if (this[i] is Player) {
+                        Console.Write(Player);
+                    } else if (this[i] is Player) {
+                        Console.Write(Player);
+                    } else if (this[i] is Player) {
+                        Console.Write(Player);
+                    } else if (this[i] is Player) {
+                        Console.Write(Player);
+                    } else {
+                        Console.Write(".");
                     }
-                } else if (this[i] is Player) {
-                    Console.Write(Player);
-                } else if (this[i] is Player) {
-                    Console.Write(Player);
-                } else if (this[i] is Player) {
-                    Console.Write(Player);
-                } else if (this[i] is Player) {
-                    Console.Write(Player);
-                } else if (this[i] is Player) {
-                    Console.Write(Player);
                 } else {
-                    Console.Write(".");
+                    Console.Write("~");
                 }
             }
         }

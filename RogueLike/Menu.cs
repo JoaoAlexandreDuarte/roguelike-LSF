@@ -51,7 +51,12 @@ namespace RogueLike {
         }
 
         private void DisplayCredits() {
-
+            Console.Clear();
+            Console.WriteLine("Developers:");
+            Console.WriteLine("\t* Leandro Bras  a21701284");
+            Console.WriteLine("\t* Flavio Santos a21702334");
+            Console.WriteLine("\t* Sara Gama     a21705494");
+            Console.ReadKey();
         }
     }
 }

@@ -30,6 +30,9 @@ namespace RogueLike {
 
         public void GenerateWorld() {
             do {
+                // Update all explored tiles
+                UpdateTiles();
+
                 // Draw the world and the stats/legend side bar
                 myDrawing.DrawWorld(myPlayer, myWorld, level);
                 myDrawing.DrawStats(myPlayer, myWorld);
@@ -57,24 +60,28 @@ namespace RogueLike {
 
             // Check witch key was pressed to update the player X or Y
             if (key.Key == ConsoleKey.W) {
+                // Moves the Player North losing 1 hp
                 if (myPlayer.y != 0) {
                     myPlayer.y--;
                     myPlayer.Hp--;
                     myPlayer.LastMove = "You Moved NORTH!";
                 }
             } else if (key.Key == ConsoleKey.A) {
+                // Moves the Player West losing 1 hp
                 if (myPlayer.x != 0) {
                     myPlayer.x--;
                     myPlayer.Hp--;
                     myPlayer.LastMove = "You Moved WEST!";
                 }
             } else if (key.Key == ConsoleKey.S) {
+                // Moves the Player South losing 1 hp
                 if (myPlayer.y != 7) {
                     myPlayer.y++;
                     myPlayer.Hp--;
                     myPlayer.LastMove = "You Moved SOUTH!";
                 }
             } else if (key.Key == ConsoleKey.D) {
+                // Moves the Player East losing 1 hp
                 if (myPlayer.x != 7) {
                     myPlayer.x++;
                     myPlayer.Hp--;
@@ -84,6 +91,25 @@ namespace RogueLike {
 
             // Insert the player into the first position on the Tile list
             myWorld.myTiles[myPlayer.y, myPlayer.x].Insert(0, passPlayer);
+        }
+
+        /// <summary>
+        /// Updates the tiles arround the player, setting them as explored
+        /// </summary>
+        private void UpdateTiles() {
+            // Update explored tiles keeping in mind the limits of the grid
+            if (myPlayer.y > 0) {
+                myWorld.myTiles[myPlayer.y - 1, myPlayer.x].Explored = true;
+            }
+            if (myPlayer.y < myWorld.Rows - 1) {
+                myWorld.myTiles[myPlayer.y + 1, myPlayer.x].Explored = true;
+            }
+            if (myPlayer.x > 0) {
+                myWorld.myTiles[myPlayer.y, myPlayer.x - 1].Explored = true;
+            }
+            if (myPlayer.x < myWorld.Columns - 1) {
+                myWorld.myTiles[myPlayer.y, myPlayer.x + 1].Explored = true;
+            }
         }
     }
 }
