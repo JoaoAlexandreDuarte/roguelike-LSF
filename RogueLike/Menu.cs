@@ -9,7 +9,9 @@ namespace RogueLike {
         private Game myGame;
         private HighScore myScores;
 
-
+        /// <summary>
+        /// Constructs a new Menu
+        /// </summary>
         public Menu() {
             myScores = new HighScore();
         }
@@ -31,25 +33,32 @@ namespace RogueLike {
             Choice(Console.ReadLine());
         }
 
+        /// <summary>
+        /// Check what the player chose
+        /// </summary>
+        /// <param name="option">Player input</param>
         private void Choice(string option) {
             switch (option) {
-                case "1":
+                case "1": // Starts the Game
                     myGame = new Game();
                     myGame.GenerateWorld();
                     break;
-                case "2":
+                case "2": // Displays the HighScores
                     myScores.DisplayHighScores();
                     break;
-                case "3":
+                case "3": // Displays the Credits
                     DisplayCredits();
                     break;
-                case "4":
+                case "4": // Exits the game
                     Environment.Exit(0);
                     break;
             }
             DrawMenu();
         }
 
+        /// <summary>
+        /// Displays the credits
+        /// </summary>
         private void DisplayCredits() {
             Console.Clear();
             Console.WriteLine("Developers:");

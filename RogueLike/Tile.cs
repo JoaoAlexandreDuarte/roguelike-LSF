@@ -43,12 +43,20 @@ namespace RogueLike {
             }
         }
 
+        /// <summary>
+        /// Return a list of all my objects
+        /// </summary>
+        /// <returns>list of all my objects</returns>
         public IEnumerable<Object> GetList() {
             foreach (Object obj in this) {
                 yield return obj;
             }
         }
 
+        /// <summary>
+        /// Return a list of all objects of a given type
+        /// </summary>
+        /// <returns>list of all objects of a given type</returns>
         public T GetObjects<T>() {
             foreach (Object obj in this) {
                 if (obj is T) {
@@ -58,6 +66,10 @@ namespace RogueLike {
             return default(T);
         }
 
+        /// <summary>
+        /// Override ToString
+        /// </summary>
+        /// <returns>Information about my objects</returns>
         public override string ToString() {
             string myObjects = "";
             foreach (Object obj in this) {

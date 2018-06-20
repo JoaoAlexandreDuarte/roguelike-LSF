@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace RogueLike {
     class Generator {
+        // Pregenerate Random Seed
         Random rnd;
 
         // Generator Objects
@@ -41,6 +42,12 @@ namespace RogueLike {
         private readonly string localFood = "Food.txt";
         private readonly string localWeapon = "Weapon.txt";
 
+        /// <summary>
+        /// Constructs a new Generator
+        /// </summary>
+        /// <param name="level">Current level</param>
+        /// <param name="myWorld">My World</param>
+        /// <param name="rnd">Preveously generated random seed</param>
         public Generator(int level, World myWorld, Random rnd) {
             this.rnd = rnd;
             this.level = level;
@@ -53,6 +60,9 @@ namespace RogueLike {
             PlaceNPCs(level);
         }
 
+        /// <summary>
+        /// Creates a new map placing it in a random tile in the world
+        /// </summary>
         public void PlaceTheMap() {
             do {
                 spawnRow = (int)(rnd.NextDouble() * myWorld.Rows);
@@ -63,6 +73,9 @@ namespace RogueLike {
             myWorld.myTiles[spawnRow, spawnCol].Insert(0, myMap);
         }
 
+        /// <summary>
+        /// Creates new traps placing them in a random tile in the world
+        /// </summary>
         public void PlaceTraps() {
             List<string> TrapList = File.ReadAllLines(localTrap).ToList();
 
@@ -92,6 +105,9 @@ namespace RogueLike {
             }
         }
 
+        /// <summary>
+        /// Creates new foods placing them in a random tile in the world
+        /// </summary>
         private void PlaceTheFood() {
             List<string> FoodList = File.ReadAllLines(localFood).ToList();
 
@@ -114,6 +130,9 @@ namespace RogueLike {
             }
         }
 
+        /// <summary>
+        /// Creates new weapons placing them in a random tile in the world
+        /// </summary>
         private void PlaceTheWeapons() {
             List<string> WeaponList = File.ReadAllLines(localWeapon).ToList();
 
@@ -137,6 +156,10 @@ namespace RogueLike {
             }
         }
 
+        /// <summary>
+        /// Creates new NPC that can be Neutral or Hostile placing them in a random 
+        /// tile in the world
+        /// </summary>
         private void PlaceNPCs(int level) {
             myNPC = new NPC(level, rnd);
             int NPCftl;
@@ -146,9 +169,11 @@ namespace RogueLike {
                 NPCftl = baseNPCs + (int)(level * multiplier);
             }
 
+            // Generate a random limited number of NPCs for this level
             NPCftl = rnd.Next(NPCftl);
             if (NPCftl > maxNPCs) NPCftl = maxNPCs;
 
+            // Runs a certain number of times spawning a sigle NPC each run
             for (int i = 0; i < NPCftl; i++) {
                 do {
                     spawnRow = (int)(rnd.NextDouble() * myWorld.Rows);

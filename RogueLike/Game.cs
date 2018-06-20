@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace RogueLike {
     class Game {
+        // Random seed
         Random rnd;
 
-        private int level = 23;
+        // Starting level
+        private int level = 1;
+
+        // Saves the player's key press
         private ConsoleKeyInfo key;
 
         // MyPlayer
@@ -24,17 +28,31 @@ namespace RogueLike {
         // MyScores
         private HighScore myScore;
 
+        /// <summary>
+        /// Game Constructor 
+        /// </summary>
         public Game() {
+            // Generate a new Random seed
             rnd = new Random();
+            // Create a new Player
             myPlayer = new Player(65);
+            // Create a new World
             myWorld = new World(myPlayer, rnd);
+            // Create a new Generator
             myGenerator = new Generator(level, myWorld, rnd);
+            // Create a new Draw
             myDrawing = new Draw();
+            // Start HiScores
             myScore = new HighScore();
+            // Create a new Interaction
             myInteractions = new Interaction(myPlayer, myWorld, myDrawing, myGenerator, rnd);
         }
 
+        /// <summary>
+        /// Runs the Game on a do-while loop
+        /// </summary>
         public void GenerateWorld() {
+            // Start a new do-while loop to play the game
             do {
                 // Update all explored tiles
                 UpdateTiles();
@@ -47,8 +65,10 @@ namespace RogueLike {
                 // Read Key input and update player
                 key = Console.ReadKey();
 
+                // Updates the player
                 UpdatePlayer();
 
+                // Checks if the player is standing in an Exit tile to switch levels
                 if (myWorld.myTiles[myPlayer.y, myPlayer.x].Exit) {
                     level++;
                     myWorld = new World(myPlayer, rnd);
@@ -56,12 +76,16 @@ namespace RogueLike {
                     myInteractions = new Interaction(myPlayer, myWorld, myDrawing, myGenerator, rnd);
                 }
 
+                // Loops the game while the player is alive
             } while (myPlayer.Hp > 0);
 
             // Ask the player for his name
             myScore.NewScore(level);
         }
 
+        /// <summary>
+        /// Updates every information about the player
+        /// </summary>
         private void UpdatePlayer() {
             Player passPlayer;
             passPlayer = myPlayer;
@@ -106,17 +130,24 @@ namespace RogueLike {
                     myInteractions.NpcChecker();
                 }
             } else if (key.Key == ConsoleKey.E) {
+                // Choses an item to pickup 
                 myInteractions.PickItems();
             } else if (key.Key == ConsoleKey.I) {
+                // Draw Informations
                 myDrawing.DrawInformations();
+                // Check for enemy NPCs
                 myInteractions.NpcChecker();
             } else if (key.Key == ConsoleKey.Q) {
+                // Quit the game
                 myInteractions.Quit();
             } else if (key.Key == ConsoleKey.V) {
+                // Choses an item to drop
                 myInteractions.DropItems();
             } else if (key.Key == ConsoleKey.U) {
+                // Choses an item to use
                 myInteractions.UseItems();
             } else if (key.Key == ConsoleKey.F) {
+                // Start a fight interaction
                 myInteractions.Fight();
             }
 
@@ -129,6 +160,7 @@ namespace RogueLike {
         /// </summary>
         private void UpdateTiles() {
             // Update explored tiles keeping in mind the limits of the grid
+            //
             if (myPlayer.y > 0) {
                 myWorld.myTiles[myPlayer.y - 1, myPlayer.x].Explored = true;
             }
@@ -141,6 +173,7 @@ namespace RogueLike {
             if (myPlayer.x < myWorld.Columns - 1) {
                 myWorld.myTiles[myPlayer.y, myPlayer.x + 1].Explored = true;
             }
+            //
         }
     }
 }

@@ -13,6 +13,9 @@ namespace RogueLike {
         public List<string> ScoreList { get; set; }
         private string name = "";
 
+        /// <summary>
+        /// Construcs a new HighScore
+        /// </summary>
         public HighScore() {
             if (File.Exists(filename)) {
                 ScoreList = File.ReadAllLines(filename).ToList();

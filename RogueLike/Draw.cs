@@ -19,8 +19,17 @@ namespace RogueLike {
         private readonly int statOffset = 5;
         private readonly int messageOffset = 30;
 
+        /// <summary>
+        /// Empty Draw Constructor
+        /// </summary>
         public Draw() { }
 
+        /// <summary>
+        /// Draws the World
+        /// </summary>
+        /// <param name="myPlayer">My Player</param>
+        /// <param name="myWorld">The World</param>
+        /// <param name="level">Current level</param>
         public void DrawWorld(Player myPlayer, World myWorld, int level) {
             this.level = level;
             Console.Clear();
@@ -96,6 +105,9 @@ namespace RogueLike {
             Console.WriteLine("* " + myPlayer.LastInteraction + "\n");
             Console.WriteLine("What do i see?");
             Console.WriteLine("---------------");
+
+            // Check Player position to write what he can see on the tiles next to him
+            //
             if (myPlayer.y > 0) {
                 Console.WriteLine("* NORTH : " + myWorld.myTiles[myPlayer.y - 1, myPlayer.x]);
             }
@@ -108,6 +120,8 @@ namespace RogueLike {
             if (myPlayer.x < myWorld.Columns - 1) {
                 Console.WriteLine("* EAST  : " + myWorld.myTiles[myPlayer.y, myPlayer.x + 1]);
             }
+            //
+
             Console.WriteLine("* HERE  : " + myWorld.myTiles[myPlayer.y, myPlayer.x]);
             Console.WriteLine();
             Console.WriteLine("Options");
@@ -117,6 +131,10 @@ namespace RogueLike {
             Console.WriteLine("(I) Information (Q) Quit game");
         }
 
+        /// <summary>
+        /// Draws a small header for the item interactions
+        /// </summary>
+        /// <param name="type">Type of interaction</param>
         public void ItemInteraction(string type) {
             Console.Clear();
             Console.WriteLine("Select item to " + type);
@@ -124,6 +142,9 @@ namespace RogueLike {
             Console.WriteLine("0  Back");
         }
 
+        /// <summary>
+        /// Draws a small header for the commbat interactions
+        /// </summary>
         public void FightInteraction() {
             Console.Clear();
             Console.WriteLine("Select NPC to Attack");
