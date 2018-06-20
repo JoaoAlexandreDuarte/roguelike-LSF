@@ -124,6 +124,12 @@ namespace RogueLike {
             Console.WriteLine("0  Back");
         }
 
+        public void FightInteraction() {
+            Console.Clear();
+            Console.WriteLine("Select NPC to Attack");
+            Console.WriteLine("--------------------\n");
+        }
+
         /// <summary>
         /// Draws the ful information window
         /// </summary>

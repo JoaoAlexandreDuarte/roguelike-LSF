@@ -176,6 +176,50 @@ namespace RogueLike {
             }
         }
 
+        public void Fight() {
+            int i = 0;
+            string input;
+            NPC[] myi = new NPC[10];
+
+            // Draw Header
+            myDrawing.FightInteraction();
+
+            foreach (Object obj in myWorld.myTiles[myPlayer.y, myPlayer.x].GetList().ToList()) {
+                if (obj is NPC) {
+                    if ((obj as NPC).Type == NPCType.Hostile)
+                        myi[i] = (obj as NPC);
+                    Console.WriteLine(i + " " + obj);
+                    i++;
+                }
+            }
+            if (myi[0] != null && (myPlayer.equiptSlot != default(Weapon))) {
+                input = Console.ReadLine();
+                for (i = 0; i < myi.Length; i++) {
+                    if (myi[i] != null && input == Convert.ToString(i)) {
+                        // Attack the Npc
+                        float myDamage = (float)(rnd.NextDouble() * myPlayer.equiptSlot.AttackPower);
+                        myi[i].Hp -= myDamage;
+
+                        // Check NPC's Hp
+                        if (myi[i].Hp <= 0) {
+                            myWorld.myTiles[myPlayer.y, myPlayer.x].Remove(myi[i]);
+                        }
+
+                        // Check if the weapon will break
+                        if (rnd.NextDouble() > myPlayer.equiptSlot.Durability) {
+                            myPlayer.equiptSlot = default(Weapon);
+                        }
+
+                        myPlayer.LastInteraction = "You attacked a NPC, and did: " +
+                            myDamage + " Damage";
+                    }
+                }
+
+            }
+
+            NpcChecker();
+        }
+
         public void Quit() {
             string input;
             Console.Clear();

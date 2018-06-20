@@ -116,6 +116,8 @@ namespace RogueLike {
                 myInteractions.DropItems();
             } else if (key.Key == ConsoleKey.U) {
                 myInteractions.UseItems();
+            } else if (key.Key == ConsoleKey.F) {
+                myInteractions.Fight();
             }
 
             // Insert the player into the first position on the Tile list
