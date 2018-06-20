@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
+    /// <summary>
+    /// Creates a new Trap
+    /// </summary>
     class Trap {
         // Trap name
         public string MyTrap { get; set; }

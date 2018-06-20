@@ -1,4 +1,7 @@
 ﻿namespace RogueLike {
+    /// <summary>
+    /// Map object
+    /// </summary>
     class Map {
         /// <summary>
         /// Construct a new Map

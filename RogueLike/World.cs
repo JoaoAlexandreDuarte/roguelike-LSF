@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
+    /// <summary>
+    /// Generates the level
+    /// </summary>
     class World {
         Random rnd;
 

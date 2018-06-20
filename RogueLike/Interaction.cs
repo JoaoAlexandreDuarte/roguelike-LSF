@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
+    /// <summary>
+    /// Responsible for all Interactions the player has
+    /// </summary>
     class Interaction {
         // Pre Generated Random seed
         Random rnd;

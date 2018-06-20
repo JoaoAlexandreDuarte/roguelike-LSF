@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
+    /// <summary>
+    /// Generats Items and Objects
+    /// </summary>
     class Generator {
         // Pregenerate Random Seed
         Random rnd;

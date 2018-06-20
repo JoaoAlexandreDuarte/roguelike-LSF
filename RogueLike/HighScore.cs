@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
+    /// <summary>
+    /// Gets the HighScores
+    /// </summary>
     class HighScore {
         private readonly int maxSize = 10;
 

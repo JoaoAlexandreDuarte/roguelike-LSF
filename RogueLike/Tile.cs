@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
+    /// <summary>
+    /// Creates a new tile
+    /// </summary>
     class Tile : List<Object> {
         // Unicode for all Objects
         public string Player { get; } = "\u2A00";

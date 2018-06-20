@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
+    /// <summary>
+    /// Runs the Game
+    /// </summary>
     class Game {
         // Random seed
         Random rnd;

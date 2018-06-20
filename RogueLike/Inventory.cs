@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
+    /// <summary>
+    /// Player's Inventory
+    /// </summary>
     class Inventory : List<IStuff>, IStuff {
         public float Weight {
             get {

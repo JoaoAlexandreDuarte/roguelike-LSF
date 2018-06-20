@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
+    /// <summary>
+    /// Creates a new Weapon
+    /// </summary>
     class Weapon : IStuff {
         // Weapon Weight
         public float Weight { get; }

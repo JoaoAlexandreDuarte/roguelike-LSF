@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
+    /// <summary>
+    /// Creates the Player
+    /// </summary>
     class Player {
         // Player baseWeight
         private float baseWeight;

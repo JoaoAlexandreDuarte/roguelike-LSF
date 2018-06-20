@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
+    /// <summary>
+    /// Displays the Menu and check player choices
+    /// </summary>
     class Menu {
         private Game myGame;
         private HighScore myScores;

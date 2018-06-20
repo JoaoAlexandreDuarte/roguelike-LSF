@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
+    /// <summary>
+    /// Creates an NPC
+    /// </summary>
     class NPC : IHasHp {
         // Receves a premade Random Speed
         Random rnd;

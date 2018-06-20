@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
+    /// <summary>
+    /// Starts the program
+    /// </summary>
     class Program {
         static void Main(string[] args) {
             // Changes the Console encoding to be 'UTF8'.

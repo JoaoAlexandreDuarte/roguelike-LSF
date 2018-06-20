@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RogueLike {
+    /// <summary>
+    /// Rasponsible for the Food
+    /// </summary>
     class Food : IStuff {
         // Name of the Food
         public string Type { get; }
