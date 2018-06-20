@@ -95,6 +95,44 @@ namespace RogueLike {
             }
         }
 
+        public void UseItems() {
+            int i = 1;
+            string input;
+
+            /* Create a new IStuff array with the size of the player 
+             * inventory plus what he has equiped */
+            IStuff[] myi = new IStuff[myPlayer.myInventory.Count() + 1];
+
+            // DrawHeader
+            myDrawing.ItemInteraction("Use");
+
+            foreach (IStuff stuff in myPlayer.myInventory) {
+                myi[i] = stuff;
+                Console.WriteLine(i + " " + stuff);
+                i++;
+            }
+            if (myi.Length > 1) {
+                input = Console.ReadLine();
+                for (i = 1; i < myi.Length; i++) {
+                    if (myi[i] != null && input == Convert.ToString(i)) {
+                        if (myi[i] is Food && myPlayer.Hp < 100) {
+                            myPlayer.Hp += (myi[i] as Food).Heal;
+                            myPlayer.myInventory.Remove(myi[i]);
+                            if (myPlayer.Hp > 100) {
+                                myPlayer.Hp = 100;
+                            }
+                        } else if (myi[i] is Weapon) {
+                            if (myPlayer.equiptSlot != null) {
+                                myPlayer.myInventory.Add(myPlayer.equiptSlot);
+                            }
+                            myPlayer.equiptSlot = (myi[i] as Weapon);
+                            myPlayer.myInventory.Remove(myi[i]);
+                        }
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Checks the tile list for traps that damage the player
         /// </summary>

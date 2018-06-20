@@ -49,9 +49,9 @@ namespace RogueLike {
             Console.SetCursorPosition(offsetX, offsetY + i++);
             Console.Write("Hp\t\t: " + myPlayer.Hp);
             Console.SetCursorPosition(offsetX, offsetY + i++);
-            Console.Write("Weapon\t: " + "'WeponHere'");
+            Console.Write("Weapon\t: " + myPlayer.equiptSlot);
             Console.SetCursorPosition(offsetX, offsetY + i);
-            Console.Write("Inventory\t: " + "'inv%Here' Full");
+            Console.Write("Inventory\t: " + myPlayer.InventoryPercentage() + " Full");
             // Offset Stats from Legend
             i += statOffset;
 
@@ -108,7 +108,7 @@ namespace RogueLike {
             if (myPlayer.x < myWorld.Columns - 1) {
                 Console.WriteLine("* EAST  : " + myWorld.myTiles[myPlayer.y, myPlayer.x + 1]);
             }
-            Console.WriteLine("* HERE  : " + myWorld.myTiles[myPlayer.x, myPlayer.y]);
+            Console.WriteLine("* HERE  : " + myWorld.myTiles[myPlayer.y, myPlayer.x]);
             Console.WriteLine();
             Console.WriteLine("Options");
             Console.WriteLine("--------");
