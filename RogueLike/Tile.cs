@@ -57,19 +57,6 @@ namespace RogueLike {
         }
 
         /// <summary>
-        /// Return a list of all objects of a given type
-        /// </summary>
-        /// <returns>list of all objects of a given type</returns>
-        public T GetObjects<T>() {
-            foreach (Object obj in this) {
-                if (obj is T) {
-                    return (T)obj;
-                }
-            }
-            return default(T);
-        }
-
-        /// <summary>
         /// Override ToString
         /// </summary>
         /// <returns>Information about my objects</returns>

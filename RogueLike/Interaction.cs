@@ -146,8 +146,7 @@ namespace RogueLike {
                 if (obj is Trap) {
                     if (!(obj as Trap).FallenInto) {
                         // Get Random Damage
-                        float myDamage = (float)(rnd.NextDouble() *
-                            myWorld.myTiles[myPlayer.y, myPlayer.x].GetObjects<Trap>().Damage);
+                        float myDamage = (float)(rnd.NextDouble() * (obj as Trap).Damage);
 
                         (obj as Trap).FallenInto = true;
                         // Take random damage from the trap
@@ -165,15 +164,15 @@ namespace RogueLike {
             foreach (Object obj in myWorld.myTiles[myPlayer.y, myPlayer.x].GetList().ToList()) {
                 if (obj is NPC) {
                     if ((obj as NPC).Type == NPCType.Hostile) {
+                        // Get Random Damage
+                        float myDamage = (float)(rnd.NextDouble() * (obj as NPC).AttackPower);
+
                         // Give Damage to the Player
-                        myPlayer.Hp -= (
-                            myWorld.myTiles[myPlayer.y, myPlayer.x].GetObjects<NPC>().AttackPower *
-                            (float)rnd.NextDouble());
+                        myPlayer.Hp -= myDamage;
 
                         // Update Last Interaction
-                        myPlayer.LastInteraction = "You where attack by a hostile NPC and lost " +
-                            myWorld.myTiles[myPlayer.y, myPlayer.x].GetObjects<NPC>().AttackPower +
-                            "Hp.";
+                        myPlayer.LastInteraction = string.Format("You where attack by a hostile " +
+                            "NPC and lost {0:f2} Hp.", myDamage);
                     }
                 }
             }
